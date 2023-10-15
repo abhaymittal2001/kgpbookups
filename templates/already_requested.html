@@ -1,0 +1,12 @@
+{% extends "header.html" %}
+{% block content %}
+<link rel="stylesheet" href="static/request_confirm.css">
+<div class="payment__container">
+    <h3 class="payment__container-heading">You have already requested this book!</h3>
+    <img class="payment__container-image" src="https://res.cloudinary.com/dmnazxdav/image/upload/v1599736321/tick_hhudfj.svg" alt="Requested"/>
+    <h3 class="payment__container-welcome">{{title}}</h3>
+    <p class="payment__container-text">Requested by {{name}}</p><br>
+    <img src="{{imgurl}}" style="width:150px; height:200px; border: 2px solid black">
+    
+  </div>
+{% endblock %}

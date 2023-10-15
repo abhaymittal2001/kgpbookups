@@ -1,0 +1,49 @@
+{% extends 'header.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="static/search_results.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<form action="/" method = "get" style="display: flex; justify-content: center; margin:auto; "> 
+    <button type="submit" style="padding:10px; width: 200px; background-color: azure; transform: scale(1.5); border-radius: 12px; position: fixed; z-index:2;"><i class="fa fa-search"aria-hidden="true"></i>  Make another search</button> 
+</form>
+<br><br><br>
+
+<div style="text-align: center"><i>{{search_results|length}} Search Results</i></div>
+<div style="overflow: scroll; height:495px;">
+<div class = "search_results">
+{% for i in range(search_results|count) %}
+    <div class = "book_details" onclick="show()">
+        <img src = "{{ imageurl[i] }}" alt="{{search_results[i]['title']}}" class = "book_image" >
+        <div class = "book_details_display" >
+            <br><br><br>
+            <p class = "book_name">{{search_results[i]['title']}}</p>
+            <div class="author" ><span>-by </span><p class = "author_name">{{ search_results[i]['author'] }}</p></div>
+            
+            {% if search_results[i]['allow_borrow'] %}
+            {% if search_results[i]['availability'] %}
+            <p class="availability">Available</p>
+            {% else %}
+            <p class="availability">Not available at the moment, borrow requests will be delayed.</p>
+            {% endif %}
+            <form action = '/request_book' method = 'post'>
+                <input type="hidden" value ="{{search_results[i]['title']}}" name = "title">
+                <input type="hidden" value ="{{search_results[i]['author']}}" name = "author">
+                <input type="hidden" value ="{{search_results[i]['email']}}" name = "email">
+                <input type="hidden" value ="{{search_results[i]['filename']}}" name = "filename">
+                <br>
+                <button type="submit"  onmouseover="this.style.backgroundColor='aqua';" onmouseout="this.style.backgroundColor='';" style="width: 200px; height: 30px; border-radius: 10px; background-color: beige;">Request to Borrow</button>
+            </form>
+            {% else %}
+            <p class="availability">This book belongs to you.</p>
+            {% endif %}
+        </div>
+        
+    </div>
+{% endfor %}   
+<br><br><br> 
+</div>
+</div>
+
+
+{% endblock %}

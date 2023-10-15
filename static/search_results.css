@@ -1,0 +1,39 @@
+.book_details {
+    margin : auto;
+    display: grid;
+    grid-template-columns: 200px 600px;
+    width : 800px;
+    background-image:  linear-gradient(to bottom right, rgb(141, 172, 182), #ffffff);
+    /* min-height: ; */
+    margin: 20px auto;
+    border-radius: 25px;
+    
+}
+
+.book_details_display{
+    position: relative;
+    z-index: 7;
+}
+ .book_image{
+    width: 150px;
+    height: 200px;
+    float: left;
+    cursor: pointer;
+}
+
+
+.book_name {
+    font-size: 30px;
+    font-weight: bold;
+
+}
+.author {
+    font-style: italic;
+    display: inline;
+}
+.author_name {
+    display : inline;
+}
+.availability {
+    font-weight: bold;
+}

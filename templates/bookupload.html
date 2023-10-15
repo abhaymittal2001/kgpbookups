@@ -1,0 +1,33 @@
+{% extends "header.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="static/bookupload.css">
+<br><br><br>
+<form action="/upload_data" method="post" enctype="multipart/form-data" style="width: 600px; margin: 0 auto;">
+  <!-- Title input -->
+  <div class="form-outline mb-4">
+    <label class="form-label" for="title">Book Title:</label><br>
+    <input required type="text" id="title" name="title" class="form-control" style="width:600px; margin: 0 auto; padding: 20px; height:10px;"/>
+    
+  </div>
+  <br><br>
+  <!-- Author input -->
+  <div class="form-outline mb-4">
+    <label class="form-label" for="author">Name of the author:</label><br>
+    <input required type="text" id="author" name="author" class="form-control" style="width:600px; margin: 0 auto; padding: 20px; height:10px;"/>
+    
+  </div>
+  <br><br>
+  <div>
+    <label for="formFileLg" class="form-label">Upload photo of the book:</label><br><br>
+    <input required name="imagefile" class="form-control form-control-lg" id="formFileLg" accept="image/*" type="file" style="width: 600px; font-size: 20px;">
+  </div>
+  <br><br>
+  <!-- Submit button -->
+  <div class="wrap">
+    <button class="button" style="transform: scale(1.3); font-weight: 900;">Post Book</button>
+  </div>
+</form>
+
+<script type="text/javascript" src="static/scripts/bookupload.js"></script>
+{% endblock %} 

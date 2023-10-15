@@ -1,0 +1,134 @@
+{% extends "header.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="static/updates.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div style="text-align: center"><i>{{updates|length}} updates</i></div>
+<br>
+<div style="overflow: scroll; height:535px;">
+{% for update in updates %}
+
+{% if update['type']==1 %}
+<div class="Message Message--orange">
+    <div class="Message-icon">
+        <i class="fa fa-book"></i>
+    </div>
+    <div class="Message-body">
+      <p>Your borrow request for <b>{{update['title']}}</b> has been accepted.</p>
+      <p>Lender: <b>{{update['owner']}}</b>, Email: <b>{{update['email']}}</b>, Phone: <b>{{update['phone']}}</b></p>
+    </div>
+  </div>
+{% endif %}
+
+{% if update['type']==2 %}
+<div class="Message">
+    <div class="Message-icon">
+      <i class="fa fa-bell-o"></i>
+    </div>
+    <div class="Message-body">
+      <p><b>{{update['borrower']}}</b> has requested to borrow the book: <b>{{update['title']}}</b></p>
+      <div class="accept-decline">
+      <form action="/accept" method="post">
+        <input type="hidden" value="{{update['transactionID']}}" name="transactionID">
+        <button class="Message-button" id="js-showMe" style="background-color: rgb(56, 255, 30); color: black; font-weight: 900;">Accept</button>
+      </form>
+      <form action="/decline" method="post">
+        <input type="hidden" value="{{update['transactionID']}}" name="transactionID">
+        <button class="Message-button js-messageClose" style="background-color: red; color: black; font-weight: 900;">Decline</button>
+      </form>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% if update['type']==3 %}
+<div class="Message Message--orange">
+    <div class="Message-icon">
+        <i class="fa fa-book"></i>
+    </div>
+    <div class="Message-body">
+      <p>You accepted the borrow request from <b>{{update['borrower']}}</b> for the book <b>{{update['title']}}</b>.</p>
+    </div>
+  </div>
+{% endif %}
+
+{% if update['type']==4 %}
+<div class="Message Message--red">
+    <div class="Message-icon">
+      <i class="fa fa-times"></i>
+    </div>
+    <div class="Message-body">
+      <p>Your borrow request for <b>{{update['title']}}</b> has been declined.</p>
+    </div>
+  </div>
+{% endif %}
+
+{% if update['type']==5 %}
+<div class="Message Message--green">
+    <div class="Message-icon">
+      <i class="fa fa-check"></i>
+    </div>
+    <div class="Message-body">
+      <p><b>{{update['borrower']}}</b> has returned the book: <b>{{update['title']}}</b>.</p>
+    </div>
+  </div>
+{% endif %}
+
+{% if update['type']==6 %}
+<div class="Message Message--green">
+    <div class="Message-icon">
+      <i class="fa fa-check"></i>
+    </div>
+    <div class="Message-body">
+      <p>You have returned the book <b>{{update['title']}}</b> to its owner <b>{{update['owner']}}</b>.</p>
+    </div>
+  </div>
+{% endif %}
+
+{% if update['type']==7 %}
+<div class="Message Message--orange">
+    <div class="Message-icon">
+      <i class="fa fa-hourglass"></i>
+    </div>
+    <div class="Message-body">
+      <p>You have requested to borrow the book <b>{{update['title']}}</b>.</p>
+      <div class="accept-decline">
+        <form action="/takeback" method="post">
+          <input type="hidden" value="{{update['transactionID']}}" name="transactionID"/>
+          <button class="Message-button" id="js-showMe" type="submit" style="background-color: rgb(255, 221, 30); color: black; font-weight: 900;">Take back request</button>
+        </form>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+
+{% if update['type']==8 %}
+<div class="Message">
+    <div class="Message-icon">
+      <i class="fa fa-bell-o"></i>
+    </div>
+    <div class="Message-body">
+      <p><b>{{update['borrower']}}</b> has requested to borrow the book: <b>{{update['title']}}</b></p>
+      <div class="accept-decline">
+      <form action="/accept" method="post">
+        <input type="hidden" value="{{update['transactionID']}}" name="transactionID">
+        <button disabled class="Message-button" id="js-showMe" style="background-color: rgb(156, 165, 154); color: rgb(88, 86, 86); font-weight: 900;">Accept</button>
+      </form>
+      <form action="/decline" method="post">
+        <input type="hidden" value="{{update['transactionID']}}" name="transactionID">
+        <button disabled class="Message-button js-messageClose" style="background-color: rgb(156, 165, 154); color: rgb(88, 86, 86); font-weight: 900;">Decline</button>
+        <i style="color: yellow;"><i class="fa fa-warning"></i>You have lended the book to another user. </i>
+      </form>
+      
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+{% endfor %}
+</div>
+<br><br><br><br>
+
+{% endblock %}

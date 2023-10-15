@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <link rel="stylesheet" href="static/header.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+</head>
+<body class="content">
+    <div style="position: fixed; width: 100%;">
+    <header>
+        {% if not session['name']==None %}
+        <div class="top" style="display: flex; align-items: center;position:absolute;">
+            <img style="height: 50px; margin:10px;" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOaO_9nwLbrH5OuqAjKtkSPjLREMC4oMT01A&usqp=CAU" alt="dp">
+            <div>{{session['name']}}</div>
+            <form action="/logout" method="post">
+                <button class="log-but" type="submit" style="margin:20px; padding: 10px;border-radius: 15px;font-size: 15px;">
+                    <b>Log out</b>
+                </button>
+            </form>
+        </div>
+        {% else %}
+        <div class="top" style="display: flex; align-items: center;position:absolute;">
+            <form action="/login" method="GET">
+                <button class="log-but" type="submit" style="margin:20px; padding: 10px;border-radius: 15px;font-size: 15px;">
+                    <b>Log in</b>
+                </button>
+            </form>
+        </div> 
+        {% endif %}       
+        <a style="text-decoration: none;"href="{{url_for('home_page')}}">
+            <h1>KGPBookUps</h1>    
+        </a>
+        <nav>
+            <a href="{{url_for('home_page')}}">{%if g.active_menu_item=='search' %}<b>Search</b>{% else %}Search{% endif %}</a>
+            <a href="{{url_for('upload')}}">{%if g.active_menu_item=='upload' %}<b>Book Upload</b>{% else %}Book Upload{% endif %}</a>
+            <a href="{{url_for('my_uploads')}}">{%if g.active_menu_item=='my_uploads' %}<b>My Uploads</b>{% else %}My Uploads{% endif %}</a>
+            <a href="{{url_for('borrowed')}}">{%if g.active_menu_item=='borrowed' %}<b>Borrowed</b>{% else %}Borrowed{% endif %}</a>
+            <a href="{{url_for('lended')}}">{%if g.active_menu_item=='lended' %}<b>Lended</b>{% else %}Lended{% endif %}</a>
+            <a href="{{url_for('updates')}}">{%if g.active_menu_item=='updates' %}<b>Updates</b>{% else %}Updates{% endif %}</a>
+            <a href="{{url_for('myprofile')}}">{%if g.active_menu_item=='myprofile' %}<b>My profile</b>{% else %}My Profile{% endif %}</a>
+            
+        </nav>
+    </header>
+    </div>
+    <br><br><br><br><br><br><br><br><br>
+    {% block content %}
+    {% endblock %}
+    <div class="footer">
+        < Made with <i class="fa fa-heart"></i> by the students of AJCB,IIT KGP />
+    </div>
+
+    <script type="text/javascript" src="static/scripts/search.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+</body>
+
+</html>

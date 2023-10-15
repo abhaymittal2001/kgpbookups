@@ -1,0 +1,21 @@
+{% extends 'header.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="static/search_results.css">
+<br>
+<div style="text-align: center"><i>{{search_results|length}} Book Uploads</i></div>
+<div class = "search_results">
+{% for i in range(search_results|count) %}
+    <article class = "book_details">
+        <img src = "{{ imageurl[i] }}" alt="{{search_results[i]['title']}}" class = "book_image" >
+        <div class = "book_details_display" >
+            <br><br><br>
+            <p class = "book_name">{{search_results[i]['title']}}</p>
+            <div class="author" ><span>-by </span><p class = "author_name">{{ search_results[i]['author'] }}</p></div>
+        </div>
+        
+    </article>
+{% endfor %}    
+</div>
+<br><br><br><br>
+{% endblock %}

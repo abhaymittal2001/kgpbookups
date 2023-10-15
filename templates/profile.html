@@ -1,0 +1,25 @@
+{% extends "header.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="static/profile.css">
+<div class="all">
+    <div class="image">
+        <img class="dp" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOaO_9nwLbrH5OuqAjKtkSPjLREMC4oMT01A&usqp=CAU" alt="profile-photo">
+        <br>
+        <span class="user"><b>{{session['name']}}</b></span>
+    </div>
+    <div class="break">
+        <hr>
+    </div>
+    <div class="details" >
+        <p class="info" ><b>Email Address:</b> {{session['email']}}</p>
+        <p class="info" ><b>Roll No:</b> {{session['roll']}}</p>
+        <p class="info"><b>Mobile Number:</b> {{session['phone']}}</p>
+        <p class="info"><b>{{session['hall']}}</b></p>
+
+    </div>
+    <div class="break">
+        <hr>
+    </div>
+</div>
+{% endblock %}

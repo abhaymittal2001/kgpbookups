@@ -1,0 +1,17 @@
+{% extends "header.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="static/home_page.css">
+<div class="container">
+    <form class='search-form' autocomplete="off" action="/search" method="post">
+      <div class="finder">
+        <div class="finder__outer">
+          <div class="finder__inner">
+            <div class="finder__icon" ref="icon"></div>
+            <input class="finder__input" type="text" name="keyphrase" placeholder="Search for any book !"/>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+{% endblock %}

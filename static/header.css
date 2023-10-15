@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    font: normal 18px 'Open Sans', sans-serif;
+    background: #fafafa;
+    color: #333;
+}
+
+main {
+    min-height: 100vh;
+}
+
+header {
+    background: white;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    position:relative;
+    box-shadow: 0px 8px 10px rgb(167, 167, 167);
+}
+
+.top {
+    top: 5px;
+    right: 10px;
+}
+
+.log-but:hover {
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    font: normal 4em 'Lobster Two', serif;
+    text-align: center;
+}
+
+nav {
+    max-width: 800px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+nav a {
+    flex-grow: 1;
+    text-align: center;
+    padding: 1em;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    transform: scaleX(0);
+    background: #333;
+    transition: 0.7s transform cubic-bezier(0.06, 0.9, 0.28, 1);
+}
+
+nav a:hover::after {
+    transform: scaleX(1)
+}
+
+ ::placeholder {
+    color: white;
+}
+
+.footer{
+    width: 100%;
+    background-color: white;
+    padding:15px;
+    z-index: 2;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    box-shadow: 0px -8px 10px rgb(167, 167, 167);
+}

@@ -1,0 +1,38 @@
+
+    
+    .all {
+        margin: 10px;
+    }
+    
+    .dp {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+    }
+    
+    .image {
+        margin: auto;
+        text-align: center;
+        padding: 15px;
+    }
+    
+    .user {
+        font: normal 1.5em 'Lucida Handwriting', 'Cursive';
+    }
+    
+    .break {
+        width: 30%;
+        margin: auto;
+    }
+    
+    .details {
+        padding: 15px;
+        padding-left: 500px;
+        text-align: left;
+        font: normal 18px 'Open Sans', 'sans-serif';
+    }
+    
+    .info {
+        padding: 8px;
+    }
+

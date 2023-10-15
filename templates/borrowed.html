@@ -1,0 +1,38 @@
+{% extends "header.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="static/search_results.css">
+<div style="text-align: center"><i>{{search_results|length}} Books Borrowed</i></div>
+<div style="overflow: scroll; height:555px;">
+<div class = "search_results">
+{% for result in search_results %}
+    {% if result['status'] == 'accepted' %}
+    <div class = "book_details">
+    {% else %}
+    <div class="book_details" style="background-image:  linear-gradient(to bottom right, rgb(147, 228, 122), #ffffff);">
+    {% endif %}
+        <img src = "{{ result['imageurl'] }}" alt="{{result['title']}}" class = "book_image" >
+        <div class = "book_details_display" >
+            <br><br>
+            <p class = "book_name">{{result['title']}}</p>
+            <div class="author" ><span>-by </span><p class = "author_name">{{ result['author'] }}</p></div>
+            <br><b>Lender: </b>{{result['owner_name']}}<br>
+            <b>Email: </b>{{result['owner']}}<br>
+            <b>Phone: </b></b>{{result['phone']}}
+            {% if result['status'] == 'accepted' %}
+            <br><b>Yet to be returned.</b>
+            {% else %}
+            <br><b>Book is returned.</b>
+            {% endif %}
+        </div>
+        
+    </article>
+
+{% endfor %}
+</div>
+</div>
+</div>
+</div>
+<br><br><br><br>
+{% endblock %}

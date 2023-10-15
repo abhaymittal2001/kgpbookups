@@ -1,0 +1,13 @@
+{% extends "header.html" %}
+{% block content %}
+<link rel="stylesheet" href="static/request_confirm.css">
+<div class="payment__container">
+    <h3 class="payment__container-heading">Book Returned!</h3>
+    <img class="payment__container-image" src="https://res.cloudinary.com/dmnazxdav/image/upload/v1599736321/tick_hhudfj.svg" alt="Accepted"/>
+    <h3 class="payment__container-welcome">{{result['title']}}</h3>
+    <p class="payment__container-text">Borrowed by {{result['borrower_name']}}</p><br>
+    <img src="{{imageurl}}" style="width:150px; height:200px; border: 2px solid black">
+    
+  </div>
+
+{% endblock %}
